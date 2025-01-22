@@ -18,7 +18,7 @@ Der Spieler bekommt nur kleine "Stempel" und muss sich die Runen selbst zusammen
 
 ![Stempel](etc\documentation_images\pitch2.png)
 
-Ein Modell interpretiert die Runen und gibt dem Spielercharakter die dementsprechenden Angriffe. ZB. Schlägt man mit dem Schwert, bis man 50 Feuerschaden hat, dnach schießt man Feuerbälle, usw. Das kann dann deterministisch passieren.
+Ein Modell interpretiert die Runen und gibt dem Spielercharakter die dementsprechenden Angriffe. ZB. Schlägt man mit dem Schwert, bis man 50 Feuerschaden hat, danach schießt man Feuerbälle, usw. Das kann dann deterministisch passieren.
 
 ## Herangehensweise
 
