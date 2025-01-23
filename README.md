@@ -12,11 +12,11 @@ __Lernziel 2__: AI Verfahren (Regelungstechnik, computer vision, genetische Algo
 
 Kleines Proof of Concept Spiel, in dem man sein Schwert selbst mit "Runen" beschmieden kann, in dem ein ML-Modell die Runen interpretiert und man dann stats bekommt. (In Rot sind die vom Spieler gezeichneten Runen markiert; mit Orange ist markiert, was das Modell finden soll)
 
-![visual concept](etc\documentation_images\pitch1.png)
+![visual concept](etc/documentation_images/pitch1.png)
 
 Der Spieler bekommt nur kleine "Stempel" und muss sich die Runen selbst zusammenstellen.
 
-![Stempel](etc\documentation_images\pitch2.png)
+![Stempel](etc/documentation_images/pitch2.png)
 
 Ein Modell interpretiert die Runen und gibt dem Spielercharakter die dementsprechenden Angriffe. ZB. Schlägt man mit dem Schwert, bis man 50 Feuerschaden hat, danach schießt man Feuerbälle, usw. Das kann dann deterministisch passieren.
 

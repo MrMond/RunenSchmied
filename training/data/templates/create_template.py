@@ -1,3 +1,5 @@
+'''define paths in template_shapes.json and execute this script to generate some templates'''
+
 import json
 import os
 import ast
@@ -24,7 +26,7 @@ for key, trail in template_definitions.items():
 
     print(f"{name}\t{color}\t\t{path}")
 
-    img = Image.new("RGB",IMG_SIZE,"#FFFFFF")
+    img = Image.new("RGBA",IMG_SIZE,"#FFFFFF00")
 
     draw = ImageDraw.Draw(img)
     draw.line(path,fill=color,width=LINE_WIDTH)
