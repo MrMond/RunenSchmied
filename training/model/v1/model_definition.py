@@ -1,4 +1,5 @@
 import torch
+from torch.nn import Module
 import os
 import ast
 import tqdm # for progress bar visualization
@@ -9,7 +10,20 @@ from configparser import ConfigParser as CP
 config = CP()
 config.read(os.path.join(os.getcwd(),"etc",".conf"))
 
-DATASET_VERSION = config.get("model_training","dataset_version")
 MODEL_VERSION = config.get("model_training","model_version")
 
-data_dir = os.path.join(os.getcwd(),"training/data/training_data",DATASET_VERSION)
+class UNet(Module):
+    def __init__(self):
+        super().__init__()
+    
+        # Encoder
+        
+        
+        # Decoder
+    
+    def forward(self,x):
+        # Encoder
+        
+        # Decoder
+    
+        pass

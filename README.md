@@ -25,4 +25,13 @@ Ein Modell interpretiert die Runen und gibt dem Spielercharakter die dementsprec
 1) Es werden einige Stempel (training\data\templates) definiert
 1) Es werden Bilder (mit verschiedenen graden der Komplexität) und dazugeförige Masken erstellt
 1) Es wird ein (mehrere) Modell trainiert
+    - U-Net + Watershed (or Connected Components)
 1) Es wird ein kleiner Prototyp zur Visualisierung der Ergebnisse erstellt
+
+## Dokumentation
+
+Alle Werte können int ```etc/.conf``` festgelegt werden
+
+### Daten generieren
+
+In ```training/data``` sind Skripte, um die Formen festzulegen und um die Trainingsbilder zu generieren. 

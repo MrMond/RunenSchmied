@@ -1,4 +1,4 @@
-'''define paths in template_shapes.json and execute this script to generate some templates'''
+'''define paths in template_shapes.json as a list of points (rang: [0;1]) and execute this script to generate some templates'''
 
 import json
 import os
