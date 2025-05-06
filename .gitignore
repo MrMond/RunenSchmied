@@ -1,6 +1,7 @@
 *.env
 install.ipynb
 .vscode
+.tmp
 training/data/training_data/*
 
 # GITHUB TEMPLATE:

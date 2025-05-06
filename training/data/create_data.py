@@ -1,6 +1,6 @@
 import os
 import ast
-import tqdm # for progress bar visualization
+from tqdm import tqdm # for progress bar visualization
 import random
 from configparser import ConfigParser as CP
 from PIL import Image
@@ -44,6 +44,6 @@ if __name__ == "__main__":
     out_path = os.path.join(os.getcwd(),dt_path,"training_data",DATASET_VERSION)
     template_path = os.path.join(os.getcwd(),dt_path,"templates/templates")
     
-    for i in tqdm.tqdm(range(N_SAMPLES), f"generating new dataset ({DATASET_VERSION})"):
+    for i in tqdm(range(N_SAMPLES), f"generating new dataset ({DATASET_VERSION})"):
         generate_image(out_path,template_path,i)
 
