@@ -1,19 +1,19 @@
 import pygame
-import os
 
-pygame.init()
+pygame.init() # the following imports require initialized pygame environment
 
+from game.window import draw_state
 from game.event_handler import handle_events
-from game.window import SCREEN, draw_state
-from game.game_objects.player import player_movement_step
-from game.game_state import get_objects
+from game.game_state import SCENEMANAGER
 
 if __name__ == "__main__":
     
     while True:
         
-        draw_state(get_objects())
+        scene = SCENEMANAGER.get_active_scene()
         
-        player_movement_step()
+        draw_state(scene)
         
-        handle_events()
+        scene.step() # accept player inputs
+                
+        handle_events(scene)
