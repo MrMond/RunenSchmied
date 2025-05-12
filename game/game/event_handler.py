@@ -29,7 +29,7 @@ def handle_events(scene:Scene):
             case pygame.MOUSEMOTION:
                 if isinstance(scene,ImageInput):
                     if scene.mouse_held:
-                        scene.get_objects()["canvas"].interact()
+                        scene.get_objects()["canvas"].interact(connect_previous=True)
 
 def close_game():
     pygame.quit()

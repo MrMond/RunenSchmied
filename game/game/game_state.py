@@ -94,31 +94,44 @@ class Interactable(Drawable):
 class Canvas(Drawable):
 
     def __init__(self):
-        self.img_surface = None
+        self.visualize_surface = None
+        self.draw_surface = None
+        self.previous=(0,0)
         
-    def interact(self):
-        if not isinstance(self.img_surface,pygame.Surface):
+    def interact(self,connect_previous=False):
+        if not isinstance(self.draw_surface,pygame.Surface):
             return
         position = pygame.mouse.get_pos()
-        rect = self.img_surface.get_rect()
+        rect = self.draw_surface.get_rect()
         rect.center = pygame.display.get_surface().get_rect().center
-        if  rect.collidepoint(*position):
-            xc,yc = rect.topleft
-            corr_pos = position[0]-xc,position[1]-yc
-            pygame.draw.circle(self.img_surface,(255,0,0),corr_pos,2)
+        if not rect.collidepoint(*position):
+            return
+        xc,yc = rect.topleft
+        corr_pos = position[0]-xc,position[1]-yc
+        if connect_previous: # connect a line if mouse is held
+            pygame.draw.line(self.draw_surface,(255,0,0,255),self.previous,corr_pos,4)
+        else:
+            pygame.draw.circle(self.draw_surface,(255,0,0,255),corr_pos,2)
+        self.previous = corr_pos
 
     def load_img(self,img:Image.Image):
-        self.img_surface = image_to_surface(img)
+        self.visualize_surface = image_to_surface(img)
+        transparent_img = img.convert("RGBA")
+        transparent_img.putalpha(0)
+        self.draw_surface = image_to_surface(transparent_img)
         
     def store_img(self):
-        img = surface_to_image(self.img_surface)
-        img.save(os.path.join(os.getcwd(), "etc", "mytest.png"))
+        img = surface_to_image(self.draw_surface)
+        img.save(os.path.join(os.getcwd(), "etc", "mytest2.png"))
         return img
         
     def draw(self, screen):
-        rect = self.img_surface.get_rect()
+        rect = self.visualize_surface.get_rect()
         rect.center = pygame.display.get_surface().get_rect().center
-        screen.blit(self.img_surface, rect)
+        screen.blit(self.visualize_surface, rect)
+        rect = self.draw_surface.get_rect()
+        rect.center = pygame.display.get_surface().get_rect().center
+        screen.blit(self.draw_surface, rect)
 
 
 # scenes
@@ -199,7 +212,7 @@ class ImageInput(Scene):
 
     def on_enter(self):
         img = Image.open(
-            r"D:\DHBW\projekte_semester_6\instance_segmentation\training\data\training_data\v1\3.png"
+            r"C:\Users\ms216u.MUCLVAD1\OneDrive - Linde Group\Studium\Semester 5\Grunglagen KI\Abgaben\Abgabe2- Computer Vision\Repo\etc\mytest.png"
         )
         self.canvas.load_img(img)
         self.stats_display.set_display(None)
