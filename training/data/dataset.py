@@ -25,6 +25,7 @@ class TrainingDataset(Dataset):
         self.images = [os.path.join(DATA_DIR,img) for img in os.listdir(DATA_DIR)]
         self.img_transforms = transforms.Compose([
             transforms.Grayscale(num_output_channels=1),
+            transforms.RandomHorizontalFlip(),
             transforms.ToTensor()
         ])
     def __len__(self):
