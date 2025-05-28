@@ -46,4 +46,3 @@ if __name__ == "__main__":
     
     for i in tqdm(range(N_SAMPLES), f"generating new dataset ({DATASET_VERSION})"):
         generate_image(out_path,template_path,i)
-

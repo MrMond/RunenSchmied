@@ -1,11 +1,6 @@
 import torch
 import os
-import ast
-from tqdm import tqdm # for progress bar visualization
 from configparser import ConfigParser as CP
-from torch.utils.data import DataLoader
-import torch.optim as optim
-import torch.nn as nn
 
 # relative imports
 from model.training import train_model

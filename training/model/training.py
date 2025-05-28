@@ -76,7 +76,7 @@ def train_model(model:nn.Module)->nn.Module: # after https://docs.pytorch.org/tu
                 if phase == "train":
                     scheduler.step(epoch_loss)
                 
-                if epoch+1%5==0 or epoch == 0:
+                if (epoch+1)%5==0 or epoch == 0:
                     print(f"\n{epoch+1}({phase}) Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}")
                 
                 if phase == "val" and epoch_acc > best_acc:
