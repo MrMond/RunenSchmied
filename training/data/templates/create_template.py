@@ -2,6 +2,7 @@
 
 import json
 import os
+import random
 import ast
 from configparser import ConfigParser as CP
 from PIL import Image, ImageDraw
@@ -18,18 +19,19 @@ with open(os.path.join(CD,"template_shapes.json"),"r") as of:
     template_definitions = json.load(of)
 
 for key, trail in template_definitions.items():
+    for i in range(1,101):
+        name = f"{i}.png"
+        color = trail['color']
+        path = trail['path']
+        path = [(p[0]+random.uniform(-0.1,0.1),p[1]+random.uniform(-0.1,0.1)) for p in path] # apply some noise
+        path = [(int(p[0]*IMG_SIZE[0]),int(p[1]*IMG_SIZE[1])) for p in path] # scale path to IMG_SIZE
 
-    name = f"{key}.png"
-    color = trail['color']
-    path = trail['path']
-    path = [(int(p[0]*IMG_SIZE[0]),int(p[1]*IMG_SIZE[1])) for p in path] # scale path to IMG_SIZE
+        print(f"{name}\t{color}\t\t{path}")
 
-    print(f"{name}\t{color}\t\t{path}")
+        img = Image.new("RGBA",IMG_SIZE,"#FFFFFF00")
 
-    img = Image.new("RGBA",IMG_SIZE,"#FFFFFF00")
+        draw = ImageDraw.Draw(img)
+        draw.line(path,fill=color,width=LINE_WIDTH)
 
-    draw = ImageDraw.Draw(img)
-    draw.line(path,fill=color,width=LINE_WIDTH)
-
-    img.save(os.path.join(CD,"templates",name), compress_level=0)
-    img.close()
+        img.save(os.path.join(CD,"templates",key,name), compress_level=0)
+        img.close()
